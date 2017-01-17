@@ -7,8 +7,6 @@ git clone git://git.drogon.net/wiringPi
 cd wiringPi
 ./build
 
-Copy this code into Geany, save into a new folder.
-
 Set build commands in Geany:
 Compile: gcc -Wall "%f" -lwiringPi -lpthread
 Execute: sudo ./a.out
