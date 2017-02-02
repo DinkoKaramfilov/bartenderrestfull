@@ -1,7 +1,7 @@
 {
 	"drinks": [{
 		"id": "fun",
-		"name": "Fun Drink",
+		"displayName": "Fun Drink",
 		"recipe": {
 			"strongIngredient": 1,
 			"otherIngredient": 5
