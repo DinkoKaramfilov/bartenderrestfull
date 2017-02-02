@@ -33,7 +33,7 @@ try:
 		dist = (time2 - time1) * 340 * 0.5 * 100
 		
 		for index, light in enumerate(lights):
-			GPIO.output(light, dist < (index + 1) * 5)
+			GPIO.output(light, dist < (index + 1) * 10)
 		
 		print dist
 		

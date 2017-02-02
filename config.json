@@ -1,0 +1,18 @@
+{
+	"drinks": [{
+		"id": "fun",
+		"name": "Fun Drink",
+		"recipe": {
+			"strongIngredient": 1,
+			"otherIngredient": 5
+		}
+	}],
+	"ingredients": [{
+		"id": "strongIngredient",
+		"pin": 0
+	}, {
+		"id": "otherIngredient",
+		"pin": 1
+	}],
+	"millisPerOunce": 1000
+}
