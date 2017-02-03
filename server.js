@@ -1,19 +1,26 @@
-var drinkController = require('./drinkController');
+var drinkController = require('./drinkController').init();
 
 var app = require('express')();
 app.use(require('cors')());
 
-app.get('/', (req, res) => res.send('This is the RPI Drinkbot!'));
-app.get('/config', (req, res) => res.send(config));
+app.get('/', (req, res) => {
+	res.send('This is the RPI Drinkbot!');
+});
 
-app.post('/drink/:drinkID/make', (req, res) => {
+app.get('/config', (req, res) => {
+	var config = config;
+	res.send(drinkController.getConfig());
+});
+
+app.post('/request/:drinkID', (req, res) => {
 	
 	try {
-		drinkController.makeDrink(req.params.drinkID);
-		res.send('ok!');
+		var msg = drinkController.queueDrink(req.params.drinkID);
+		console.log(msg);
+		res.send(msg);
 	} catch (error) {
 		console.error(error);
-		res.status(500).send(error.message);
+		res.status(500).send(error);
 		return;
 	}
 });

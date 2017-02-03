@@ -8,7 +8,7 @@ button = 12
 
 def detect(chn):
 	pressed = GPIO.input(button)
-	if pressed == 1:
+	if pressed == 0:
 		GPIO.output(relay, 1)
 	else:
 		GPIO.output(relay, 0)
