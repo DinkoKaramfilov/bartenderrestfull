@@ -25,7 +25,7 @@ controlling that ingredient.
 
 
 
-Once the server is running, send a POST request to host:3000/drink/:drinkID/make to make the corresponding drink.
-":drink" should be the id of a drink in config.json.
+Once the server is running, send a POST request to localhost:3000/drink/:drinkID/make to make the corresponding drink.
+":drinkID" should be the id of a drink in config.json.
 
-Send a GET request to host:3000/config to get the whole config.json file. Use this file to populate the UI.
+Send a GET request to localhost:3000/config to get config.json. Use this file to populate the UI.
