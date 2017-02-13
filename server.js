@@ -1,11 +1,10 @@
 var drinkController = require('./drinkController').init();
 
-var app = require('express')();
-app.use(require('cors')());
+var express = require('express');
+var app = express();
 
-app.get('/', (req, res) => {
-	res.send('This is the RPI Drinkbot!');
-});
+app.use(require('cors')());
+app.use(express.static('public'));
 
 app.get('/config', (req, res) => {
 	var config = config;
@@ -13,7 +12,6 @@ app.get('/config', (req, res) => {
 });
 
 app.post('/request/:drinkID', (req, res) => {
-	
 	try {
 		var msg = drinkController.queueDrink(req.params.drinkID);
 		console.log(msg);

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- boilerplate meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- add Angular.js and our script -->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="scripts.js"></script>
+  </head>
+
+  <!-- The body contains the template for the app -->
+  <!-- ng-app tells Angular what module to use -->
+  <!-- ng-controller connects a controller to this template -->
+  <body ng-app="app" ng-controller="ctrl">
+
+    <!-- This div will repeat for each drink -->
+    <div ng-repeat="drink in drinks">
+      <h3>{{ drink.displayName }}</h3>
+      <ul>
+        <li ng-repeat="(ing, shots) in drink.recipe">
+          {{ shots }} shots {{ ing }}
+        </li>
+      </ul>
+      <button ng-click="order(drink)">Order</button>
+    </div>
+
+  </body>
+</html>
