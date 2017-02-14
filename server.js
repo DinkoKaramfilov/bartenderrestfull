@@ -8,8 +8,9 @@ var app = express();
 // send CORS headers so the browser will allow communication with the server from anywhere
 app.use(require('cors')());
 
-// serve the contents of the public folder on request
-app.use(express.static('public'));
+app.get('/', (req, res) => {
+	res.sendFile('ui.html', {root: __dirname});
+});
 
 // serve config. To separate concerns and keep things DRY, only drinkController accesses config.json directly
 app.get('/config', (req, res) => {
