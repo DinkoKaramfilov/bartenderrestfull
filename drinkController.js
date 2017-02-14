@@ -32,10 +32,7 @@ function makeNextDrink(){
 	// get the first drink from the queue. The drink is one of the objects inside config.drinks
 	var currentDrink = queue.shift();
 
-	// we need to figure out how long it will take to make the drink. Since the pumps start at
-	// the same time and run simultaneously, then whichever pump runs the longest will
-	// determine how long it will take to make the drink
-	var maxTime = 0;
+	var promises = [];
 
 	// iterate over the ingredients in the recipe for the current drink
 	for (var ingredientID in currentDrink.recipe){
@@ -46,28 +43,32 @@ function makeNextDrink(){
 			return;
 		}
 
-		// calculate how long to turn on the pi
+		// calculate how long to turn on the pin
 		var ounces = currentDrink.recipe[ingredientID];
 		var millisToRun = ounces * config.millisPerOunce;
 
-		// keep track of which ingredient takes the longest
-		maxTime = Math.max(maxTime, millisToRun);
-
 		// turn the pin on. This happens asyncronously, so the loop continues so quickly that all
 		// the needed pumps come on a virtually the same time
-		gpioController.pinOnDuration(ingredientConfig.pin, millisToRun);
+		// each call returns a promise and we collect those in an array
+		promises.push(
+			gpioController.pinOnDuration(ingredientConfig.pin, millisToRun)
+		);
 	}
+	
+	console.log('Making ' + currentDrink.displayName);
 
-	// wait for maxTime + 1 second. setTimeout is non-blocking
-	setTimeout(() => {
+	// when all of the promises we collected have returned, we know the drink is done being made
+	Promise.all(promises).then(() => {
 		busy = false;
 		console.log(queue.length ?
 			'The next drink on the queue is ' + queue[0].displayName + '. Press the button.'
 			: 'There are no more drinks in the queue. Order more.'
 		);
-	}, maxTime + 1000);
-
-	console.log('Making ' + currentDrink.displayName);
+	
+	// if anything bad happens, log it out.
+	}).catch(err => {
+		console.error(err);
+	});
 }
 
 module.exports = () => {

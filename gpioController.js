@@ -13,7 +13,7 @@ try {
 // keep a map of the pins in use. The key is the number, the value is the pin api returned from new GPIO
 var openPins = {};
 
-//
+// when the process exits, close all the pins. This throws an error for some reason.
 process.on('SIGINT', () => {
 	for (var pinID in openPins){
 		openPins[pinID].unexport();
@@ -48,10 +48,15 @@ module.exports = {
 
 		pump.writeSync(1);
 		console.log('Turning on pin ' + pin + ' for ' + millis + 'ms');
-		setTimeout(() => {
-			pump.writeSync(0);
-			console.log('Turning off pin ' + pin);
-		}, millis);
+		
+		// return a promise that resolves when the pump is turned off.
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				pump.writeSync(0);
+				console.log('Turning off pin ' + pin);
+				resolve();
+			}, millis);
+		});
 	},
 
 	// set a function to call when a button is pushed
