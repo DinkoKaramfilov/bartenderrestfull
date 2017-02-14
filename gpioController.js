@@ -63,11 +63,13 @@ module.exports = {
 		}
 
 		button.watch((err, value) => {
-			console.log('Button pressed!');
 			if (err) console.error(err);
 
 			// for some reason, the value is 0 when the button is pushed. Whatever.
-			if (!value) callback();
+			if (!value){
+				console.log('Button pressed!');
+				callback();
+			}
 		});
 	}
 };

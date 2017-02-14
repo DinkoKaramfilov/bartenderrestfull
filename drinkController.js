@@ -67,7 +67,7 @@ function makeNextDrink(){
 		);
 	}, maxTime + 1000);
 
-	console.log('Making ' + drinkConfig.displayName);
+	console.log('Making ' + currentDrink.displayName);
 }
 
 module.exports = () => {
