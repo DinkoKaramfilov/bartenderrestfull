@@ -15,10 +15,10 @@ Now the server is running. Make changes to config as needed, the server will res
 
 Details for config.json:
 
-"drinks" should contain an array of objects, each with an "id" (string), "displayName" (string), and "recipe" (object). 
-The recipe object's keys must correspond to ingredient ids and values must be the number of ounces to measure. 
+"drinks" should contain an array of objects, each with an "id" (string), "displayName" (string), and "recipe" (object).
+The recipe object's keys must correspond to ingredient ids and values must be the number of ounces to measure.
 
-"ingredients" should contain an array of objects, each with an "id" (string), and "pin" (number) corresponding to the pin 
+"ingredients" should contain an array of objects, each with an "id" (string), and "pin" (number) corresponding to the pin
 controlling that ingredient.
 
 "millisPerOunce" should be the number of milliseconds required to dispense an ounce.
@@ -31,3 +31,5 @@ Once the server is running, send a POST request to localhost:3000/request/:drink
 Push the button to start making the next drink on the queue.
 
 Send a GET request to localhost:3000/config to get config.json. Use this file to populate the UI.
+
+Send a GET request to localhost:3000 to get the UI.
