@@ -17,15 +17,23 @@
 		"displayName": "Bourbon",
 		"recipe": {
 			"bourbon": 2
-		}
+		 }
 	}, {
-		"id": "vnc",
-		"displayName": "Vodka and Cranberry", 
+		"id": "man",
+		"displayName": "Manhattan", 
 		"recipe": {
-			"vodka": 1, 
+			"whiskey": 2, 
+			"cranberry juice": 2,
+			"vermouth":1
+			}
+	}, {	 
+			"id": "MAG*",
+		"displayName": "Maggie's Cry-Bury", 
+		"recipe": {
+			"vodka": 2, 
 			"cranberry juice": 3
-		}
-	}],
+			}
+		}],
 		
 	"ingredients": [{
 		"id": "vodka",
@@ -39,7 +47,31 @@
 	}, {
 		"id": "cranberry juice",
 		"pin": 23
+	},{	
+		"id": "scotch",
+		"pin": 5
+	}, {
+		"id": "whiskey",
+		"pin": 6
+	}, {
+		"id": "goose",
+		"pin": 13
+	}, {
+		"id": "vermouth",
+		"pin": 19
+	},{	
+		"id": "next",
+		"pin": 26
+	}, {
+		"id": "next1",
+		"pin": 12
+	}, {
+		"id": "next2",
+		"pin": 16
+	}, {
+		"id": "next3",
+		"pin": 20
 	}],
-	"millisPerOunce": 1000,
+	"millisPerOunce": 500,
 	"buttonPin": 17
 }
