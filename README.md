@@ -1,4 +1,4 @@
-# rpi-drinkbot
+# Bartender
 Code to measure liquids, run on a raspberry pi.
 
 After cloning, install dependencies:
@@ -11,11 +11,13 @@ Then start the server
 npm start
 ```
 
-Now the server is running. Make changes to config as needed, the server will restart automatically after changes.
+Server is running.
+Change drinks/pins in config
+Server will restar upon changes
 
 Details for config.json:
 
-"drinks" should contain an array of objects, each with an "id" (string), "displayName" (string), and "recipe" (object).
+"drinks" =should contain an array of objects, + "id" (string),"displayName" (string), and "recipe" (object).
 The recipe object's keys must correspond to ingredient ids and values must be the number of ounces to measure.
 
 "ingredients" should contain an array of objects, each with an "id" (string), and "pin" (number) corresponding to the pin
